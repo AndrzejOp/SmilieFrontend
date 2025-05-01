@@ -1,0 +1,11 @@
+<div class="joke-card">
+    <h3>{{ joke.setup }}</h3>
+    <p>{{ joke.delivery }}</p>
+    <div class="like-section">
+      <span>Liczba polubień: {{ joke.likeCount }}</span>
+      <button (click)="likeJoke()">
+        👍 Polub
+      </button>
+    </div>
+  </div>
+  

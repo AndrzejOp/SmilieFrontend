@@ -1,0 +1,19 @@
+<nav>
+    <button (click)="setTab('new')">Nowy żart</button>
+    <button (click)="setTab('liked')">Polubione</button>
+    <button (click)="setTab('unliked')">Losowy niepolubiony</button>
+    <button style="float:right" (click)="auth.logout()">🚪 Wyloguj</button>
+  </nav>
+  
+  <div *ngIf="activeTab === 'new' && newJoke">
+    <app-joke-card [joke]="newJoke" (click)="onLike(newJoke)"></app-joke-card>
+  </div>
+  
+  <div *ngIf="activeTab === 'liked'">
+    <app-joke-card *ngFor="let joke of likedJokes" [joke]="joke"></app-joke-card>
+  </div>
+  
+  <div *ngIf="activeTab === 'unliked' && unlikedJoke">
+    <app-joke-card [joke]="unlikedJoke" (click)="onLike(unlikedJoke)"></app-joke-card>
+  </div>
+  

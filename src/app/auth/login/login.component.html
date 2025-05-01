@@ -1,0 +1,53 @@
+<div class="login-wrapper">
+  <div class="login-card shadow-lg">
+    <div class="text-center">
+      <img
+        src="https://pluspng.com/img-png/user-png-icon-account-avatar-human-male-man-men-people-person-download-svg-download-png-edit-icon-512.png"
+        alt="user"
+        class="user-image mb-3"
+      />
+    </div>
+
+    <h3 class="text-center text-primary mb-4">Zaloguj się</h3>
+
+    <form (ngSubmit)="onSubmit()">
+      <div class="form-group mb-3">
+        <label for="login" class="form-label">Login</label>
+        <input
+          id="login"
+          name="login"
+          [(ngModel)]="loginData.login"
+          required
+          class="form-control rounded-pill px-4"
+          placeholder="Wpisz swój login"
+        />
+      </div>
+
+      <div class="form-group mb-3">
+        <label for="password" class="form-label">Hasło</label>
+        <input
+          id="password"
+          type="password"
+          name="password"
+          [(ngModel)]="loginData.password"
+          required
+          class="form-control rounded-pill px-4"
+          placeholder="••••••••"
+        />
+      </div>
+
+      <button type="submit" class="btn btn-primary w-100 rounded-pill mt-2">
+        Zaloguj się
+      </button>
+    </form>
+
+    <p class="text-danger text-center mt-3" *ngIf="errorMessage">
+      {{ errorMessage }}
+    </p>
+
+    <div class="text-center mt-4 small">
+      <span>Nie masz konta?</span>
+      <a routerLink="/register" class="link-primary fw-semibold">Zarejestruj się</a>
+    </div>
+  </div>
+</div>

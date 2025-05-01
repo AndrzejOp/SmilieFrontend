@@ -1,0 +1,12 @@
+.joke-card {
+    background: #fffbe6;
+    border: 2px dashed #ffa500;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    text-align: center;
+  }
+  .like-button {
+    margin-top: 10px;
+  }
+  
