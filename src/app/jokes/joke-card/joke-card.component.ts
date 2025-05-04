@@ -6,7 +6,7 @@ import { JokesService } from '../jokes.service';
     selector: 'app-joke-card',
     templateUrl: './joke-card.component.html',
     styleUrls: ['./joke-card.component.css'],
-    standalone: false
+    standalone: true
 })
 export class JokeCardComponent {
   @Input() joke!: Joke;

@@ -20,7 +20,7 @@ export class LoginComponent {
     this.authService.login(this.loginData).subscribe({
       next: (response) => {
         localStorage.setItem('token', response.token);
-        this.router.navigate(['/']);
+        this.router.navigate(['app']);
       },
       error: () => {
         this.errorMessage = 'Nieprawidłowy login lub hasło.';
