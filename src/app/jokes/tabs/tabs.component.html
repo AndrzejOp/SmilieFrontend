@@ -1,23 +1,46 @@
 <div class="tabs-wrapper">
   <div class="tabs shadow">
     <button [class.active]="activeTab === 'new'" (click)="setTab('new')">🆕 Nowy żart</button>
-    <button [class.active]="activeTab === 'liked'" (click)="setTab('liked')">❤️ Polubione</button>
+    <button [class.active]="activeTab === 'all'" (click)="setTab('all')">📚 Żarty</button>
     <button [class.active]="activeTab === 'unliked'" (click)="setTab('unliked')">🎲 Losowy niepolubiony</button>
     <button class="logout-btn" (click)="auth.logout()">🚪 Wyloguj</button>
   </div>
 
   <div class="jokes-container">
-    <div *ngIf="activeTab === 'new' && newJoke">
-      <app-joke-card [joke]="newJoke" (click)="onLike(newJoke)"></app-joke-card>
+
+    <div *ngIf="activeTab === 'new' && newJoke" class="new-joke-section">
+      <app-joke-card
+        [joke]="newJoke"
+        [showLikeButton]="true"
+        (liked)="onLikeNew(newJoke)">
+      </app-joke-card>
+      <button class="refresh-btn" (click)="loadNewJoke()">🔄 Pokaż inny żart</button>
+    </div>
+    
+    <div *ngIf="activeTab === 'all'" class="all-jokes-section">
+      <div class="all-jokes-grid">
+        <app-joke-card
+          *ngFor="let joke of allJokes"
+          [joke]="joke"
+          [showLikeButton]="false">
+        </app-joke-card>
+      </div>
+    
+      <div class="pagination-controls">
+        <button (click)="prevPage()" [disabled]="currentPage === 0">⬅️ Poprzednia</button>
+        <span>Strona {{ currentPage + 1 }}</span>
+        <button (click)="nextPage()" [disabled]="allJokes.length < 5">➡️ Następna</button>
+      </div>
     </div>
 
-    <div *ngIf="activeTab === 'liked'" class="liked-grid">
-      <app-joke-card *ngFor="let joke of likedJokes" [joke]="joke" class="joke-card-animated"></app-joke-card>
+    <div *ngIf="activeTab === 'unliked' && unlikedJoke" class="unliked-joke-section">
+      <app-joke-card
+        [joke]="unlikedJoke"
+        [showLikeButton]="true"
+        (liked)="onLikeUnliked(unlikedJoke)">
+      </app-joke-card>
     </div>
     
 
-    <div *ngIf="activeTab === 'unliked' && unlikedJoke">
-      <app-joke-card [joke]="unlikedJoke" (click)="onLike(unlikedJoke)"></app-joke-card>
-    </div>
   </div>
 </div>

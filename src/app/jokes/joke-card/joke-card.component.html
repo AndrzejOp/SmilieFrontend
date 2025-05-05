@@ -1,8 +1,13 @@
 <div class="joke-card shadow-lg">
   <h3>{{ joke.setup }}</h3>
   <p>{{ joke.delivery }}</p>
+
   <div class="like-section">
     <span>👍 {{ joke.likeCount }} polubień</span>
-    <button (click)="likeJoke()">Polub</button>
+    <button *ngIf="showLikeButton" [disabled]="loading" (click)="likeJoke()">
+      Polub
+    </button>
   </div>
+  <p *ngIf="likeMessage" class="like-message">{{ likeMessage }}</p>
+  
 </div>

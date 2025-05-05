@@ -65,3 +65,34 @@
   font-weight: 600;
   text-decoration: none;
 }
+
+.popup {
+  position: fixed;
+  top: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 16px 24px;
+  border-radius: 12px;
+  font-weight: bold;
+  z-index: 1000;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.2);
+  animation: fadeInOut 3s ease forwards;
+  color: white;
+  text-align: center;
+  max-width: 80%;
+}
+
+.success-popup {
+  background-color: #28a745;
+}
+
+.error-popup {
+  background-color: #dc3545;
+}
+
+@keyframes fadeInOut {
+  0% { opacity: 0; top: 20px; }
+  10% { opacity: 1; top: 30px; }
+  90% { opacity: 1; }
+  100% { opacity: 0; top: 10px; }
+}

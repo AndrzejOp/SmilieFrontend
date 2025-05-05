@@ -40,3 +40,23 @@
 .like-section button:hover {
   background-color: #2c4c63;
 }
+
+.like-message {
+  color: #28a745;
+  font-weight: bold;
+  margin-top: 10px;
+  animation: fadeInOut 3s ease-in-out;
+}
+
+@keyframes fadeInOut {
+  0% { opacity: 0; }
+  10% { opacity: 1; }
+  90% { opacity: 1; }
+  100% { opacity: 0; }
+}
+
+button[disabled] {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
